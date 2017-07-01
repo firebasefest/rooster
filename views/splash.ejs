@@ -1,10 +1,559 @@
 <% include partials/header %>
 <% include partials/firebase %>
 <% include partials/firebaseui %>
-<h1>Hello</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+
+<script>
+    $(document).ready(function () {
+        $("#upvoteIcon").click(function () {
+            $("fa-thumbs-up").toggleClass("fa-thumbs-o-up");
+        });
+    });
+</script>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../static/blog/favicon.ico"/>
+
+    <script src="jquery-3.1.1.min.js"></script>
+    <link href="css/hover.css" rel="stylesheet" media="all">
+
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>Raju Koushik</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        #header {
+            color: #ffffff;
+            font-size: 100px;
+            font-family: Constantia;
+            padding-left: 15px;
+            padding-top: 0px;
+            background: black;
+            text-align: center;
+        }
+
+        #border {
+            border-bottom: 2px solid lightgrey;
+            padding: 15px;
+        }
+
+        #post {
+        }
+
+        #name {
+            font-family: Andalus;
+            font-size: 15px;
+            color: white;
+        }
+
+        #date {
+            font-size: 15px;
+            padding-left: 15px;
+            font-family: David;
+        }
+
+        #text {
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 15px;
+            padding-left: 15px;
+        }
+
+        #btitle {
+            font-family: Verdana, Geneva, sans-serif;
+            padding: 15px;
+
+        }
+
+        .hvr-float {
+            display: inline-block;
+            vertical-align: middle;
+            transform: translateZ(0);
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+            backface-visibility: hidden;
+            -moz-osx-font-smoothing: grayscale;
+            transition-duration: 0.3s;
+            transition-property: transform;
+            transition-timing-function: ease-out;
+        }
+
+        .hvr-float:hover,
+        .hvr-float:focus,
+        .hvr-float:active {
+            transform: translateY(-8px);
+        }
+
+        .social-icon {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .social-icon li {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .social-icon a {
+            display: block;
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .social-icon a {
+            background: rgba(255, 255, 255, 0.85); /* social icon background color */
+            color: #000; /* social icon color */
+        }
+
+        .social-icon a:hover {
+            background: rgba(255, 255, 255, 0.25); /* social icon hover background color */
+            color: #fff; /* social icon hover color */
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            padding-top: 5px;
+            width: 100%;
+            height: 60px;
+            background-color: #000;
+        }
+
+        body {
+            font: 20px Montserrat, sans-serif;
+            line-height: 1.8;
+            color: #f5f6f7;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .margin {
+            margin-bottom: 45px;
+            margin-left: 145px;
+            margin-right: 145px;
+        }
+
+        .bg-1 {
+            background: url("/static/blog/final.jpeg");
+            background-attachment: fixed;
+            background-color: #000000; /* Green */
+            color: #ffffff;
+            justify-content: center;
+            align-items: center;
+            /* vertical-align: baseline; */
+            /* display: flex; */
+
+        }
+
+        .testfont {
+            font-family: Verdana, Geneva, sans-serif;
+        }
+
+        .test {
+            height: calc(100vh);
+        }
+
+        .pad-remove {
+            margin-top: -70px;
+        }
+
+        .bg-2 {
+            background-color: #ffffff; /* WHite */
+            color: #555555;
+        }
+
+        .bg-3 {
+            background-color: #ffffff; /* White */
+            color: #555555;
+        }
+
+        .bg-4 {
+            background-color: #2f2f2f; /* Black Gray */
+            color: #fff;
+        }
+
+        .container-fluid {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+
+        .pos {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .navbar {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: 0;
+            border-radius: 0;
+            margin-bottom: 0;
+            font-size: 12px;
+            letter-spacing: 5px;
+        }
+
+        .navbar-toggle {
+            position: relative;
+            float: right;
+            padding: 9px 10px;
+            margin-top: 8px;
+            margin-right: 15px;
+            margin-bottom: 8px;
+            background-image: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .navbar-toggle .icon-bar {
+            display: block;
+            width: 22px;
+            height: 2px;
+            border-radius: 1px;
+            background-color: #ddd /* change this to any color you want! */;
+        }
+
+        .navbar-header button:hover {
+            color: #fff;
+        }
+
+        .navbar-header a:hover {
+            color: #1abc9c !important;
+        }
+
+        .navbar-nav li a:hover {
+            color: #1abc9c !important;
+        }
+
+        p.detail {
+            color: #4C4C4C;
+            font-weight: bold;
+            font-family: Calibri
+        }
+
+        span.name {
+            color: #1abc9c;
+            font-weight: bold;
+            font-family: Tahoma
+        }
+    </style>
+</head>
 <body>
-   <!-- The surrounding HTML is left untouched by FirebaseUI.
-        Your app may use that space for branding, controls and other customizations.-->
-   <h1>Welcome to My Awesome App</h1>
-   <div id="firebaseui-auth-container"></div>
- </body>
+
+
+<!-- First Container -->
+
+<div class="container-fluid bg-1 text-center">
+
+
+    <h1 style="font-size:65px; margin-top: 50px;" class="detail hvr-float">Roosters <span
+                class="name">the chef hub</span></h1>
+
+
+    <p class="container-fluid pos testfont" style="font-size:30px"> The cooks hub you could trust for the best food
+        anytime, anywhere.
+    </p>
+
+    <h3 class="hvr-float">Google Summer of Code Intern 2017 at AboutCode</h3><br>
+    <img style="height: 100px;" src="/static/blog/dashinfinity.gif">
+</div>
+
+<!-- Second Container -->
+<div class="container-fluid bg-2 text-center ">
+
+    <div class="container" style="max-width: 800px; margin : 0 auto;">
+        <div class="jumbotron">
+            <div id="about">
+                <h2 id="btitle" class="hvr-float"><a href="" style="color:#1abc9c "><strong>About
+                            Me</strong></a></h2>
+                <p id="date" style="color:#4C4C4C ">Raju Koushik Gorantla</p>
+            </div>
+            <p align="left" id="text">Raju Koushik is an undergraduate from the Indian Institute of Information
+                Technology, Vadodara, India pursuing Information Technology. Google Summer of Code Intern 2017. A
+                hacker, coding enthusiast and a writer. A
+                software developer building servers on Django and Flask and an entrepreneur working on his own startup
+                Travel Diaries. An avid open source contributor lately working on Machine Learning and Information
+                Retrieval. Former Software Engineer Intern at Invoxel Technologies Lmt and Curo Health Care Lmt. You can
+                find him writing, reading or playing table tennis during his leisure time.
+
+            </p>
+        </div>
+    </div>
+
+
+    <div class="container" style="max-width: 800px; margin : 0 auto;">
+        <div class="jumbotron">
+            <h2 id="btitle" class="hvr-float"><a href="2 "
+                                                 style="color:#1abc9c "><strong>Build Your Own Website</strong></a></h2>
+            <p id="date">Dec. 26, 2016, 4:48 p.m.</p>
+
+
+            <p align="left" id="text">First Step<br/>The first step would be choosing a platform to build your website
+                (like HTML, CSS, Bootstrap) or You could use a CMS (Content Management System) like WordPress, Joomla or
+                Drupal.I would suggest you to use WordPress which is one of the most widely used CMS even by the biggest
+                of firms. Once you have done this you could proceed through the next step.<br/><br/>Second Step<br/>The
+                second step would be finding a domain name and a web hosting service.There are a huge bunch of firms
+                which provides this but I would suggest you to use GoDaddy for finding your Domain and web hosting
+                service. Godaddy provides you with a suitable domain name and is inexpensive.Don’t forget to google
+                coupon codes before buying a Domain Name on GoDaddy. It actually saved me a lot of bucks.<br/><br/>The
+                Final Step<br/>The final step would be installing your wordpress site to your Domain Name. WordPress has
+                an special option for One-Press Installation for the same. I would also suggest you to use some
+                WordPress plugins which would make your website a better one.</p>
+
+            <hr color="green" width="100%">
+            <i class="fa fa-thumbs-up" aria-hidden="true" id="upvoteIcon"></i>
+
+
+        </div>
+    </div>
+
+    <hr color="green" width="100%">
+
+
+    <div class="container" style="max-width: 800px; margin : 0 auto;">
+        <div class="jumbotron">
+            <h2 id="btitle" class="hvr-float"><a href="10 "
+                                                 style="color:#1abc9c "><strong>Never Feeling Alone</strong></a></h2>
+            <p id="date">Jan. 18, 2017, 12:11 p.m.</p>
+
+
+            <p align="left" id="text">The imperturbable pacifying breeze<br/>Swirling around<br/>The upbeat alluring
+                light<br/>Glowing up<br/>The innocent aroma of the damp soil <br/>Constructing over<br/>The elegant gaze
+                of the blossoming floret<br/>The stoned still pebbles nothing much serener<br/>The boisterous shore
+                frolicking around<br/>The fine sand caressing my feet<br/>The enigmatic horizon over my crown<br/>Beneath
+                the fervent abysmal blue sky<br/>Living a world drenched in my imagination<br/>But never feeling alone.
+                <br/>Never feeling alone.</p>
+
+            <hr color="green" width="100%">
+            <i class="fa fa-thumbs-up" aria-hidden="true" id="upvoteIcon"></i>
+
+
+        </div>
+    </div>
+
+    <hr color="green" width="100%">
+
+
+    <div class="container" style="max-width: 800px; margin : 0 auto;">
+        <div class="jumbotron">
+            <h2 id="btitle" class="hvr-float"><a href="15 "
+                                                 style="color:#1abc9c "><strong>Where do I go ?</strong></a></h2>
+            <p id="date">March 4, 2017, 2:34 p.m.</p>
+
+
+            <p align="left" id="text">I traveled miles<br/>Alone, looking for a better place,<br/>So that I could live
+                my dream with ease.I was heading towards<br/>an unknown place.<br/>I could see people suffer,<br/>the
+                place was affected by famine<br/>And the people died out of hunger and thirst.<br/>The only source of
+                water,<br/>were the tears of the poor.<br/>I changed my way,<br/>still looking for a better place.<br/>Now
+                I could see the place was stricken by brutal terrorism,<br/>Where an innocent’s life had no
+                value.<br/><br/>I traveled further<br/>still looking for a better place.<br/>This place was drenched in
+                water,<br/>washed away with nothing left,<br/>except for the broken remains.<br/><br/>I traveled further<br/>not
+                losing my hopes,<br/>to find a better place.<br/>This place was no better.<br/>The rich literally
+                sucked,<br/>The blood from the poor.<br/><br/>Where do I go ?</p>
+
+            <hr color="green" width="100%">
+            <i class="fa fa-thumbs-up" aria-hidden="true" id="upvoteIcon"></i>
+
+
+        </div>
+    </div>
+
+    <hr color="green" width="100%">
+
+
+    <div class="container" style="max-width: 800px; margin : 0 auto;">
+        <div class="jumbotron">
+            <h2 id="btitle" class="hvr-float"><a href="18 "
+                                                 style="color:#1abc9c "><strong>Inspired</strong></a></h2>
+            <p id="date">April 12, 2017, 9:28 a.m.</p>
+
+
+            <p align="left" id="text">Every day I feel it important to get inspired to achieve my goals and keep track
+                of my future.I have always been the underperformer inspite of my persistent search of inspiration.
+                Everyday I have practiced to take inspiration from every person I have met, tried to learn from them
+                irrespective of their flaws. I have learnt to take in inspiration for the need of achieving my goals. I
+                have tried to take in inspiration from the firm friend who handles situation with a still head, tried to
+                take inspiration from the friend who talks wise, tried to take inspiration from the old aged fruit
+                seller who sold her fruits with the same enthusiasm everyday, tried to take inspiration from my parents
+                who have never stopped to shower their love, tried to take inspiration the friend who never missed a
+                class and from the friend who never failed to miss a Shark Khan movie, tried to take inspiration from
+                every possible person and thing. I have stilled under performed. I have aimed for a perfect score in
+                Math paper , was 3 marks short, I have aimed for getting into the prestigious IITs, got into a IIIT,I
+                have aimed to secure a foreign internship in an Institute I dreamt, landed an internship at Bangalore
+                this summer, I have aimed to win a Table Tennis Tournament for my college but have been out of the semis
+                twice . I have under performed but taking in motivation from every person and every little thing in life
+                have made my life still content-full. I still remember the days I have under performed but I have learnt
+                that taking in inspiration from every possible thing that would keep one going and strive for the last
+                mile which kept me from underperforming would make one’s life better.<br/><br/>Taking in inspiration
+                from everyone and every possible thing is the key which I am sure would help me reach that extra mile.
+            </p>
+
+            <hr color="green" width="100%">
+            <i class="fa fa-thumbs-up" aria-hidden="true" id="upvoteIcon"></i>
+
+
+        </div>
+    </div>
+
+    <hr color="green" width="100%">
+
+
+    <div class="container" style="max-width: 800px; margin : 0 auto;">
+        <div class="jumbotron">
+            <h2 id="btitle" class="hvr-float"><a href="19 "
+                                                 style="color:#1abc9c "><strong>Memorable Date</strong></a></h2>
+            <p id="date">April 12, 2017, 9:33 a.m.</p>
+
+
+            <p align="left" id="text">I always yearned to go on a date with her. I came across this idea of the 40 day
+                dating challenge over the web and the first one who came across my mind was her. She being my friend, in
+                fact a close one whom I shared all the secrets of my small world, I was really tensed to ask her out for
+                a date. I explained her the idea of the 40 day dating challenge where two close friends plan out to go
+                on dates for a period of 40 days. With a lot of ease we read together the blog and decided upon taking
+                up the 40 day dating challenge. She was just getting over a breakup and I was already dating another
+                girl she knew. We didn’t want anyone in our college to know about this but we were really excited about
+                it. We have decided together the date to start the dating challenge. We have fixed it to be the 4th of
+                Feb.<br/><br/>2nd Feb<br/>I told her that we won’t be the same anymore for few days so let’s get
+                disguised into new characters. I messaged her the night that I would choose the name for her new
+                disguised character. She replied by saying that she would chose mine. We spent some time walking around
+                our hostel, talking about how exciting the dates are gonna be and bid adieu. That night when we returned
+                back to our respective hostels, I messaged her boasting how good I am at picking names and gave her a
+                hint that it was the name of my favourite sitcom character.<br/><br/>3rd Feb<br/><br/>Like any other day
+                we were walking around our hostel discussing random stuff. I asked her if she selected a name for me.
+                She told that she has done it but wants me to reveal the name first. I told her the name was Rachel. I
+                could see the excitement in her eyes imagining herself as Rachel (a character from the sitcom
+                F.R.I.E.N.D.S). Incidentally she has picked the name Ross (a character from the sitcom F.R.I.E.N.D.S ).
+                I was awestruck, we were already on the same page. We called this to be the zeroth day of our 40 day
+                dating challenge. Both of us were equally excited for the following day. The same night I messaged her
+                if she was ready for the dating challenge and the reply was a ‘Hell Yeah’. I spent the rest of the night
+                thinking about the probable dating destinations. It was her first ever date and I wanted the date to be
+                a memorable one for both of us. I felt that I could do anything for the smile on her face.<br/><br/>4th
+                Feb<br/>We woke up all excited and went on for a walk around our hostel getting to know each other and
+                revealing few untold secrets. We looked into the eyes of each other and enjoyed the moment under the
+                innocuous blue clouds. We hopped into different areas of our locality, even a nearby temple. I planned
+                for a lunch date and asked to get ready by 1pm. I told her that the destination would be a surprise. I
+                went back to the hostel and finalized a dating destination for the day after immense google searches and
+                phone calls. Selecting the place would be a key for the date and was an herculean task. I took a shower
+                and hopped into my best clothes, tried using all the cosmetics my friend had and tried to look good
+                which I conspicuously failed to. I grabbed my keys, got down the stairs and saw her waiting. I was
+                awestruck and fell for her panache at the same moment. We drove and gossiped through out the way and
+                finally reached the destination. It was an amazing restaurant which had a treehouse in it. I could see
+                the excitement in her eyes when we were climbing the stairs which guided us to the treehouse, where we
+                were about to have our lunch. We had some amazing time on the tree house 15 feet above the ground all
+                excited, complimented by some amazing Italian dishes which we never had before. We left the place after
+                clicking few pictures and headed towards a bowling alley where we had an amazing bowling experience,
+                felt like we were in a different world. We drove back to our hostel after making memories which would
+                never fade away. This was one of the most amazing dates I have ever had.Some memories never fade
+                away.<br/><br/>PS - This was the first day of our 40 day dating challenge.</p>
+
+            <hr color="green" width="100%">
+            <i class="fa fa-thumbs-up" aria-hidden="true" id="upvoteIcon"></i>
+
+
+        </div>
+    </div>
+
+    <hr color="green" width="100%">
+
+
+    <div class="container" style="max-width: 800px; margin : 0 auto;">
+        <div class="jumbotron">
+            <h2 id="btitle" class="hvr-float"><a href="20 "
+                                                 style="color:#1abc9c "><strong>Smart things lazy people do</strong></a>
+            </h2>
+            <p id="date">April 12, 2017, 9:46 a.m.</p>
+
+
+            <p align="left" id="text">The smartest thing done by lazy people is that they doesn&#39;t do things , smart
+                isn&#39;t it. They make their fellow beings to do their things and enjoy the coziness of their bed.<br/><br/>The
+                day was hot and I was really lazy to switch on my fan which was few feet away from me.There was this
+                friend of mine who lives next door , and is really intrigued by coding and he is always enthusiastic and
+                forthright to fix bugs and enjoy the sight of a code which runs successfully. I pinged my friend saying
+                that I had bugs in my code and I wanted it to be fixed as soon as possible. I grabbed my laptop and just
+                removed a semicolon from some random line(yeah! the language was not Python) of some previously written
+                code on my desktop. My friend just entered the room and asked for the problem with ease. I handed him
+                over my lappy and he found the error in no time (although he only had to run the code and check for the
+                error returned by the compiler :P ). While he was leaving my room I asked him to turn on my fan, which
+                he did conspicuously. Problem solved.<br/><br/>PS- Believe it or not I was the one on the bed.</p>
+
+            <hr color="green" width="100%">
+            <i class="fa fa-thumbs-up" aria-hidden="true" id="upvoteIcon"></i>
+
+
+        </div>
+    </div>
+
+    <hr color="green" width="100%">
+
+
+    <div class="container" style="max-width: 800px; margin : 0 auto;">
+        <div class="jumbotron">
+            <h2 id="btitle" class="hvr-float"><a href="21 "
+                                                 style="color:#1abc9c "><strong>Last Cheating Experience</strong></a>
+            </h2>
+            <p id="date">April 12, 2017, 9:48 a.m.</p>
+
+
+            <p align="left" id="text">This happened during my second semester at a IIIT. The subject was Calculus.It was
+                9:00 am and we were ready to get our question papers. As soon as I got my papers I went through it and
+                came to a conclusion that it was even difficult score 5 marks in this 40 marks paper.I had no idea and
+                ended up watching faces and was literally tensed watching all people seriously attempting their paper.
+                Its generally a difficult thing to cheat over here.I saw my friend walking towards the washroom room
+                from the window which I was sitting beside and walked briskly towards the washroom.I entered and was
+                really excited to find people discussing.I thought I could collect few answers but found our Registrar
+                coming out of one of the private room who signalled me to remain silent and was unnoticed by my poor
+                friends.Our registrar caught those guys and told them he would reduce their marks to a single digit
+                number.The situation shifts towards the mess.Found all the four friends who were caught were not really
+                worried with huge smiles over their faces. As soon as I joined them I knew that none of us would
+                actually reach the double digit mile stone. (Smiles all over in the scene).<br/>&quot;Registrar,we have
+                reduced your work as we were confident of scoring single digit marks,now you have no chance of reducing
+                them&quot; -these were the lines said by one of my friend.</p>
+
+            <hr color="green" width="100%">
+            <i class="fa fa-thumbs-up" aria-hidden="true" id="upvoteIcon"></i>
+
+
+        </div>
+    </div>
+
+    <hr color="green" width="100%">
+
+</div>
+
+<!-- Third Container (Grid) -->
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+    <div class="container">
+        <ul class="social-icon animate pull-right">
+            <li><a href="https://www.facebook.com/g.rajukoushik" title="facebook" target="_blank"><i
+                            class="fa fa-facebook"></i></a></li> <!-- change the link to social page and edit title-->
+            <li><a href="https://twitter.com/132ed143fb374f7" title="twitter" target="_blank"><i
+                            class="fa fa-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/u/0/104727747464105030726" title="google plus" target="_blank"><i
+                            class="fa fa-google-plus"></i></a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+
+
+</html>
