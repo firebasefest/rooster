@@ -10,4 +10,11 @@
     messagingSenderId: "171216647516"
   };
   firebase.initializeApp(config);
+var database = firebase.database();
+  // Get a reference to the database service
+const preObject = document.getElementById('rooster' );
+
+const dbRefObject = firebase.database().ref().child('rooster');
+const deRefList = dbRefObject.child('biryani');
+dbRefObject.on('value', snap =>console.log(snap.val()));
 </script>

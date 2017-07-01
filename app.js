@@ -10,6 +10,9 @@ var indexRoutes  = require("./routes/index");
 
 // USING Routes
 app.use("/", indexRoutes);
+app.get('*', function(req, res){
+  res.send('what???', 404);
+});
 
 //LISTENING THE PORT
 app.listen(process.env.PORT || 2000, function(){
