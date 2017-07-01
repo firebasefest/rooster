@@ -1,28 +1,2 @@
 <% include partials/header %>
 <% include partials/firebase %>
-
-<h1> Yay! You have logged in</h1>
-<body>
-
-  <pre id="object"></pre>
-  <ul id="list">
-  </ul>
-  <div id="card">
-hello
-  </div>
-</body>
-<script>
- // Get Element
-  const card = document.getElementById('card')
-  const ULlist = document.getElementById('list')
-// Create reference
-  const dbRefObject = firebase.database().ref().child('Biryani');
-// Sync obj changes
-  dbRefObject.on('value', snap => {
-    console.log(snap.val())
-    const li = document.createElement('li');
-    li.innerText = JSON.stringify(snap.val(),null,3)
-    ULlist.append(li)
-  });
-
-</script>

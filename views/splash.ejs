@@ -1,10 +1,290 @@
 <% include partials/header %>
 <% include partials/firebase %>
 <% include partials/firebaseui %>
-<h1>Hello</h1>
 <body>
-   <!-- The surrounding HTML is left untouched by FirebaseUI.
-        Your app may use that space for branding, controls and other customizations.-->
-   <h1>Welcome to My Awesome App</h1>
-   <div id="firebaseui-auth-container"></div>
- </body>
+  <!DOCTYPE html>
+  <html lang="en">
+  <script>
+      $(document).ready(function () {
+          $("#upvoteIcon").click(function () {
+              $("fa-thumbs-up").toggleClass("fa-thumbs-o-up");
+          });
+      });
+  </script>
+  <head>
+      <link rel="shortcut icon" type="image/x-icon" href="../../static/blog/favicon.ico"/>
+      <link href="css/hover.css" rel="stylesheet" media="all">
+      <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <title>Rooster</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <style>
+          #header {
+              color: #ffffff;
+              font-size: 100px;
+              font-family: Constantia;
+              padding-left: 15px;
+              padding-top: 0px;
+              background: black;
+              text-align: center;
+          }
+
+          #border {
+              border-bottom: 2px solid lightgrey;
+              padding: 15px;
+          }
+
+          #post {
+          }
+
+          #name {
+              font-family: Andalus;
+              font-size: 15px;
+              color: white;
+          }
+
+          #date {
+              font-size: 15px;
+              padding-left: 15px;
+              font-family: David;
+          }
+
+          #text {
+              font-family: Verdana, Geneva, sans-serif;
+              font-size: 15px;
+              padding-left: 15px;
+          }
+
+          #btitle {
+              font-family: Verdana, Geneva, sans-serif;
+              padding: 15px;
+
+          }
+
+          .hvr-float {
+              display: inline-block;
+              vertical-align: middle;
+              transform: translateZ(0);
+              box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+              backface-visibility: hidden;
+              -moz-osx-font-smoothing: grayscale;
+              transition-duration: 0.3s;
+              transition-property: transform;
+              transition-timing-function: ease-out;
+          }
+
+          .hvr-float:hover,
+          .hvr-float:focus,
+          .hvr-float:active {
+              transform: translateY(-8px);
+          }
+
+          .social-icon {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+          }
+
+          .social-icon li {
+              display: inline-block;
+              text-align: center;
+          }
+
+          .social-icon a {
+              display: block;
+              width: 44px;
+              height: 44px;
+              line-height: 44px;
+              border-radius: 50%;
+              margin-right: 5px;
+          }
+
+          .social-icon a {
+              background: rgba(255, 255, 255, 0.85); /* social icon background color */
+              color: #000; /* social icon color */
+          }
+
+          .social-icon a:hover {
+              background: rgba(255, 255, 255, 0.25); /* social icon hover background color */
+              color: #fff; /* social icon hover color */
+          }
+
+          .footer {
+              position: absolute;
+              bottom: 0;
+              padding-top: 5px;
+              width: 100%;
+              height: 60px;
+              background-color: #000;
+          }
+
+          body {
+              font: 20px Montserrat, sans-serif;
+              line-height: 1.8;
+              color: #f5f6f7;
+          }
+
+          p {
+              font-size: 16px;
+          }
+
+          .margin {
+              margin-bottom: 45px;
+              margin-left: 145px;
+              margin-right: 145px;
+          }
+
+
+          .bg-1 {
+              background-image: url("roost.jpg");
+              background-attachment: fixed;
+              background-color: #000000; /* Green */
+              color: #ffffff;
+              background-size: cover;
+              justify-content: center;
+              align-items: center;
+              /* vertical-align: baseline; */
+              /* display: flex; */
+
+          }
+
+          .testfont {
+              font-family: Verdana, Geneva, sans-serif;
+          }
+
+          .test {
+              height: calc(100vh);
+          }
+
+          .pad-remove {
+              margin-top: -70px;
+          }
+
+          .bg-2 {
+              background-color: #ffffff; /* WHite */
+              color: #555555;
+          }
+
+          .bg-3 {
+              background-color: #ffffff; /* White */
+              color: #555555;
+          }
+
+          .bg-4 {
+              background-color: #2f2f2f; /* Black Gray */
+              color: #fff;
+          }
+
+          .container-fluid {
+              padding-top: 70px;
+              padding-bottom: 200px;
+          }
+
+          .pos {
+              padding-top: 0px;
+              padding-bottom: 0px;
+              font-size: 15px !important;
+          }
+
+          .navbar {
+              padding-top: 15px;
+              padding-bottom: 15px;
+              border: 0;
+              border-radius: 0;
+              margin-bottom: 0;
+              font-size: 12px;
+              letter-spacing: 5px;
+          }
+
+          .navbar-toggle {
+              position: relative;
+              float: right;
+              padding: 9px 10px;
+              margin-top: 8px;
+              margin-right: 15px;
+              margin-bottom: 8px;
+              background-image: none;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+          }
+
+          .navbar-toggle .icon-bar {
+              display: block;
+              width: 22px;
+              height: 2px;
+              border-radius: 1px;
+              background-color: #ddd /* change this to any color you want! */;
+          }
+
+          .navbar-header button:hover {
+              color: #fff;
+          }
+
+          .navbar-header a:hover {
+              color: #1abc9c !important;
+          }
+
+          .navbar-nav li a:hover {
+              color: #1abc9c !important;
+          }
+
+          p.detail {
+              color: #4C4C4C;
+              font-weight: bold;
+              font-family: Calibri
+          }
+
+          span.name {
+              color: #1abc9c;
+              font-weight: bold;
+              font-family: Tahoma
+          }
+          @import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+
+      </style>
+  </head>
+  <body>
+
+
+  <!-- First Container -->
+
+  <div class="container-fluid bg-1 text-center">
+
+
+      <h1 style="font-size:65px; margin-top: 50px;" class="detail hvr-float">Roosters <span class="name">the chef hub</span></h1>
+
+<br>
+      <p class="container-fluid pos testfont" style="font-size:30px"> The cooks hub you could trust for the best food anytime, anywhere.
+      </p>
+<div id="firebaseui-auth-container"></div>
+
+  </div>
+
+  <!-- Second Container -->
+  <div class="container-fluid bg-2 text-center ">
+
+      <div class="container" style="max-width: 800px; margin : 0 auto;">
+          <div class="jumbotron">
+              <div id="about">
+                  <h2 id="btitle" class="hvr-float"><a href="" style="color:#1abc9c "><strong>About
+                      Me</strong></a></h2>
+                  <p id="date" style="color:#4C4C4C ">Rooster Inc.</p>
+              </div>
+              <p align="left" id="text">
+                Rooster is a nine platform where individuals (chefs)who are expert in any receipe can sell their food item through our platform This platform allows the users to book their favourite dish made by their favourite chef.we also provide rating for the dishes made by different chefs so that the users can select the best dish made by a chef
+
+
+              </p>
+          </div>
+      </div>
+
+
+
+
+  </div>
+</body>
